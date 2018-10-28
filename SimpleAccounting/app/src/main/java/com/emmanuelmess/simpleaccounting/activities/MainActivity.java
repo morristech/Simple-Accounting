@@ -407,18 +407,18 @@ public class MainActivity extends AppCompatActivity
 				if (table.getEditableRow() == editedTableIndex) {
 					final int dataManagerIndex = getCorrectedIndexForDataManager(editedTableIndex);
 
-					if (Utils.INSTANCE.equal(row.getCreditText().toString(), ".")) {
+					if (Utils.INSTANCE.equal(row.getCredit().toString(), ".")) {
 						tableDataManager.updateCredit(dataManagerIndex, BigDecimal.ZERO);
 						row.setCredit("0");
 					}
 
-					if (Utils.INSTANCE.equal(row.getDebitText().toString(), ".")) {
+					if (Utils.INSTANCE.equal(row.getDebit().toString(), ".")) {
 						tableDataManager.updateCredit(dataManagerIndex, BigDecimal.ZERO);
 						row.setDebit("0");
 					}
 
-					tableDataManager.updateCredit(dataManagerIndex, Utils.INSTANCE.parseString(row.getCreditText().toString()));
-					tableDataManager.updateDebit(dataManagerIndex, Utils.INSTANCE.parseString((row.getDebitText().toString())));
+					tableDataManager.updateCredit(dataManagerIndex, Utils.INSTANCE.parseString(row.getCredit().toString()));
+					tableDataManager.updateDebit(dataManagerIndex, Utils.INSTANCE.parseString((row.getDebit().toString())));
 
 					if (tableDataManager.getTotal(dataManagerIndex).toPlainString().isEmpty())
 						throw new IllegalStateException();
