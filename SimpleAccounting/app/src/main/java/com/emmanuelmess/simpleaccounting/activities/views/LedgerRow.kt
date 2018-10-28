@@ -15,6 +15,9 @@ import java.math.BigDecimal
 
 class LedgerRow(context: Context, attrs: AttributeSet) : TableRow(context, attrs) {
 
+    lateinit var ledgerRowData: LedgerRowData
+        private set
+
     lateinit var formatter: LedgerView.BalanceFormatter
 
     private lateinit var dateText: TextView
