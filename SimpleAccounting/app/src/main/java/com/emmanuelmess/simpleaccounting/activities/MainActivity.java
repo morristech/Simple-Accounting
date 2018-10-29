@@ -34,6 +34,7 @@ import com.emmanuelmess.simpleaccounting.activities.preferences.CurrencyPicker;
 import com.emmanuelmess.simpleaccounting.activities.views.LedgerRow;
 import com.emmanuelmess.simpleaccounting.activities.views.LedgerView;
 import com.emmanuelmess.simpleaccounting.activities.views.SpinnerNoUnwantedOnClick;
+import com.emmanuelmess.simpleaccounting.data.LedgerRowData;
 import com.emmanuelmess.simpleaccounting.data.TableDataManager;
 import com.emmanuelmess.simpleaccounting.dataloading.AsyncFinishedListener;
 import com.emmanuelmess.simpleaccounting.dataloading.LoadMonthAsyncTask;
@@ -376,7 +377,7 @@ public class MainActivity extends AppCompatActivity
 		return super.onOptionsItemSelected(item);
 	}
 
-	public LedgerRow loadRow() {
+	public LedgerRow loadRow(LedgerRowData data) {
 		int rowViewIndex = table.getChildCount() - 1;
 
 		LedgerRow row = (LedgerRow) table.getLastRow();

@@ -15,6 +15,7 @@ import java.math.BigDecimal
 
 import com.emmanuelmess.simpleaccounting.activities.MainActivity.EDIT_IDS
 import com.emmanuelmess.simpleaccounting.activities.MainActivity.TEXT_IDS
+import com.emmanuelmess.simpleaccounting.data.LedgerRowData
 import com.emmanuelmess.simpleaccounting.utils.get
 
 class LedgerView(context: Context, attrs: AttributeSet) : TableLayout(context, attrs) {
@@ -65,8 +66,8 @@ class LedgerView(context: Context, attrs: AttributeSet) : TableLayout(context, a
 	 * Creates and inflates a new row.
 	 * Restores editable row to view.
 	 */
-	fun inflateEmptyRow(): View {
-		return inflateRow()
+	fun inflateEmptyRow(data: LedgerRowData): View {
+		return inflateRow(data)
 	}
 
 	fun getData(rowIndex: Int)
@@ -78,14 +79,12 @@ class LedgerView(context: Context, attrs: AttributeSet) : TableLayout(context, a
 		}
 	}
 
-	private fun inflateRow(): LedgerRow {
+	private fun inflateRow(data: LedgerRowData): LedgerRow {
 		inflater.inflate(R.layout.row_main, this)
 		val row = get<LedgerRow>(childCount - 1)!!
 		row.formatter = formatter
 
-		if (invertCreditAndDebit) {
-			row.invertDebitCredit()
-		}
+		row.setDataDelayed(data, invertCreditAndDebit)
 
 		return row
 	}
