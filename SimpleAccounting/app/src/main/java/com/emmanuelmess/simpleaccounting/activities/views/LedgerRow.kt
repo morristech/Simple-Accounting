@@ -80,7 +80,7 @@ class LedgerRow(context: Context, attrs: AttributeSet) : TableRow(context, attrs
         balanceText = findViewById(R.id.textBalance)
     }
 
-    fun invertDebitCredit() {
+    private fun invertDebitCredit() {
         findViewById<View>(R.id.textCredit).id = 0
         findViewById<View>(R.id.textDebit).id = R.id.textCredit
         findViewById<View>(0).id = R.id.textDebit
