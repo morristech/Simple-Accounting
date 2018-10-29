@@ -62,11 +62,11 @@ class LedgerRow(context: Context, attrs: AttributeSet) : TableRow(context, attrs
             invertDebitCredit()
         }
 
-        dateText.setText(ledgerRowData.date)
-        referenceText.setText(ledgerRowData.reference)
-        creditText.setText(ledgerRowData.credit.toPlainString())
-        debitText.setText(ledgerRowData.debit.toPlainString())
-        balanceText.setText(formatter.format(ledgerRowData.balance))
+        dateText.text = ledgerRowData.date
+        referenceText.text = ledgerRowData.reference
+        creditText.text = ledgerRowData.credit?.toPlainString() ?: ""
+        debitText.text = ledgerRowData.debit?.toPlainString() ?: ""
+        balanceText.text = formatter.format(ledgerRowData.balance)
     }
 
     override fun onFinishInflate() {
@@ -81,9 +81,9 @@ class LedgerRow(context: Context, attrs: AttributeSet) : TableRow(context, attrs
     }
 
     fun invertDebitCredit() {
-        findViewById<View>(R.id.textCredit).setId(0)
-        findViewById<View>(R.id.textDebit).setId(R.id.textCredit)
-        findViewById<View>(0).setId(R.id.textDebit)
+        findViewById<View>(R.id.textCredit).id = 0
+        findViewById<View>(R.id.textDebit).id = R.id.textCredit
+        findViewById<View>(0).id = R.id.textDebit
 
         creditText = findViewById(R.id.textCredit)
         debitText = findViewById(R.id.textDebit)
